@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <h4 class="text-center mb-3">Welcome, {{ user }}!</h4>
+
+  <title>Breast Cancer Detection</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8bbd0, #fce4ec, #fff);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-top: 80px;
+      transition: 0.3s;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-header {
+      background: #e91e63;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .card-header h2 {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    input[type="file"] {
+      padding: 12px;
+      border: 2px dashed #e91e63;
+      border-radius: 10px;
+      background: #fff3f6;
+      transition: 0.3s;
+    }
+
+    input[type="file"]:hover {
+      background: #ffeef4;
+      border-color: #d81b60;
+    }
+
+    .btn-custom {
+      background-color: #e91e63;
+      color: white;
+      border-radius: 10px;
+      padding: 12px 25px;
+      font-size: 18px;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .btn-custom:hover {
+      background-color: #d81b60;
+      transform: scale(1.03);
+    }
+
+    /* Spinner */
+    .spinner-container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .spinner-border {
+      color: #e91e63;
+      width: 3rem;
+      height: 3rem;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>🩺 Breast Cancer Detection</h2>
+      <p>Upload an image to detect and visualize predictions</p>
+    </div>
+
+    <div class="card-body text-center">
+      <form id="predictForm" action="/predict" method="POST" enctype="multipart/form-data">
+        <div class="mb-4">
+          <input type="file" name="file" accept="image/*" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-custom">🔍 Predict Now</button>
+
+        <!-- Loading Spinner -->
+        <div class="spinner-container" id="loadingSpinner">
+          <div class="spinner-border" role="status"></div>
+          <p class="mt-2 text-muted">Analyzing image... Please wait</p>
+        </div>
+      </form>
+
+      {% if result %}
+      <div class="fade-in mt-4">
+        <h5>Prediction Result:</h5>
+        <h3>
+          {% if result == "Benign" %}
+          <span style="color: #28a745;">🩷 {{ result }}</span>
+          {% else %}
+          <span style="color: #dc3545;">⚠️ {{ result }}</span>
+          {% endif %}
+        </h3>
+
+        {% if heatmap_url %}
+        <div class="mt-4">
+          <h6>Explainable AI - Grad-CAM Heatmap</h6>
+          <img src="{{ heatmap_url }}" class="img-fluid rounded shadow-sm mt-2" alt="Heatmap" style="max-height: 350px;">
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    Developed by <strong>Our team Digital Storm </strong> | PA College of Engineering, Mangalore 💗
+  </footer>
+
+  <script>
+    const form = document.getElementById('predictForm');
+    const spinner = document.getElementById('loadingSpinner');
+
+    form.addEventListener('submit', () => {
+      spinner.style.display = 'flex';
+    });
+  </script>
+
+</body>
+</html>    

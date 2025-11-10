@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Breast Cancer Detection | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fce4ec, #fff, #f8bbd0);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: linear-gradient(135deg, #e91e63, #f48fb1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      color: white !important;
+      letter-spacing: 0.5px;
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffe3ed !important;
+      transform: scale(1.05);
+    }
+
+    .main-content {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .welcome-box {
+      background: white;
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .btn-custom {
+      background: linear-gradient(135deg, #e91e63, #f06292);
+      color: white;
+      border-radius: 10px;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 10px;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #d81b60, #ec407a);
+    }
+
+    /* Contact section */
+    #contact {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    #contact h2 {
+      color: #e91e63;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .contact-card {
+      background: #fce4ec;
+      border-radius: 15px;
+      padding: 25px;
+      width: 260px;
+      transition: 0.3s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      background: #f8bbd0;
+    }
+
+    .contact-card i {
+      color: #e91e63;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌸 Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">🩺 Breast Cancer AI System</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🌸 Main Content -->
+  <div class="main-content">
+    <div class="welcome-box">
+      <h1>Welcome to Breast Cancer Detection System</h1>
+      <p class="text-muted mb-4">
+        Experience AI-powered diagnostic support with Explainable AI (Grad-CAM).  
+        Upload mammogram scans and visualize how the model interprets the image.
+      </p>
+    </div>
+  </div>
+
+  <!-- 🌸 Footer -->
+  <footer>
+    Developed with 💗 by <strong>Digital Storm</strong> | PA College of Engineering, Mangalore
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
