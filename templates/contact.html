@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Breast Cancer Detection | Home</title>
+  <title>Contact Us | Breast Cancer AI System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -16,7 +16,6 @@
       flex-direction: column;
     }
 
-    /* Navbar styling */
     .navbar {
       background: linear-gradient(135deg, #e91e63, #f48fb1);
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -25,7 +24,6 @@
     .navbar-brand {
       font-weight: 600;
       color: white !important;
-      letter-spacing: 0.5px;
     }
 
     .navbar-nav .nav-link {
@@ -40,59 +38,21 @@
       transform: scale(1.05);
     }
 
-    .main-content {
+    .contact-container {
       flex-grow: 1;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      text-align: center;
-      padding: 50px;
-    }
-
-    .welcome-box {
-      background: white;
-      border-radius: 25px;
-      padding: 50px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-      max-width: 700px;
-      animation: fadeIn 1s ease;
-    }
-
-    h1 {
-      color: #e91e63;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .btn-custom {
-      background: linear-gradient(135deg, #e91e63, #f06292);
-      color: white;
-      border-radius: 10px;
-      padding: 12px 30px;
-      font-size: 18px;
-      font-weight: 500;
-      margin: 10px;
-      transition: all 0.3s ease;
-      border: none;
-    }
-
-    .btn-custom:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, #d81b60, #ec407a);
-    }
-
-    /* Contact section */
-    #contact {
-      background-color: #fff;
+      justify-content: center;
       padding: 60px 20px;
-      text-align: center;
-      box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.8s ease-in-out;
     }
 
-    #contact h2 {
+    h2 {
       color: #e91e63;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
     .contact-info {
@@ -100,6 +60,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 30px;
+      margin-bottom: 40px;
     }
 
     .contact-card {
@@ -107,6 +68,7 @@
       border-radius: 15px;
       padding: 25px;
       width: 260px;
+      text-align: center;
       transition: 0.3s;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
@@ -120,6 +82,37 @@
       color: #e91e63;
       font-size: 30px;
       margin-bottom: 10px;
+    }
+
+    .contact-form {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+
+    .btn-custom {
+      background: linear-gradient(135deg, #e91e63, #f06292);
+      color: white;
+      border-radius: 10px;
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #d81b60, #ec407a);
     }
 
     footer {
@@ -148,26 +141,58 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/register">Register</a></li> <!-- ✅ Added Register -->
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
           <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
           <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- 🌸 Main Content -->
-  <div class="main-content">
-    <div class="welcome-box">
-      <h1>Welcome to Breast Cancer Detection System</h1>
-      <p class="text-muted mb-4">
-        Experience AI-powered diagnostic support with Explainable AI (Grad-CAM).  
-        Upload mammogram scans and visualize how the model interprets the image.
-      </p>
-      <a href="/register" class="btn btn-custom">Create Account</a>
-      <a href="/login" class="btn btn-custom">Login</a>
+  <!-- 🌸 Contact Section -->
+  <div class="contact-container">
+    <h2>Get in Touch With Us</h2>
+
+    <div class="contact-info">
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h5>Email</h5>
+        <p>digitalstorm.team@gmail.com</p>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-phone"></i>
+        <h5>Phone</h5>
+        <p>+91 98765 43210</p>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h5>Address</h5>
+        <p>PA College of Engineering, Mangalore</p>
+      </div>
+    </div>
+
+    <!-- 🌸 Contact Form -->
+    <div class="contact-form">
+      <form method="POST" action="/contact">
+        <div class="mb-3">
+          <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <textarea name="message" rows="4" class="form-control" placeholder="Write your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-custom">Send Message</button>
+      </form>
+      {% if success %}
+<div class="alert alert-success mt-3 text-center" role="alert">
+  ✅ Thank you for contacting us! We’ll get back to you soon.
+</div>
+{% endif %}
+
     </div>
   </div>
 

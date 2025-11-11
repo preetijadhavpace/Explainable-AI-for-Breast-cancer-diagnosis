@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard | Breast Cancer AI System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body { background:#ffe6f0; font-family:'Poppins', sans-serif; }
+h1 { color:#ff3399; margin-top:20px; text-align:center; }
+h3 { color:#d63384; margin-top:30px; text-align:center; }
+.table { background:white; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-top:20px; }
+img { max-width:100px; border-radius:5px; }
+.btn-logout { background:#ff66b2; color:white; padding:8px 15px; border-radius:5px; text-decoration:none; margin-left:10px; }
+.btn-logout:hover { background:#ff3399; color:white; }
+.profile-card {
+  background:white;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  padding:25px;
+  margin-top:30px;
+  border-left:5px solid #e91e63;
+}
+.profile-card h4 { color:#e91e63; }
+.profile-details p { margin:5px 0; font-size:16px; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(135deg, #e91e63, #f48fb1);">
+  <div class="container">
+    <a class="navbar-brand text-white fw-bold" href="/">🩺 Breast Cancer AI System</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>Welcome, {{ username }}!</h1>
+
+  <!-- Radiologist Profile Section -->
+  {% if user %}
+  <div class="profile-card">
+    <h4>👩‍⚕️ Radiologist Profile</h4>
+    <div class="profile-details">
+      <p><strong>Name:</strong> {{ user['name'] }}</p>
+      <p><strong>Email:</strong> {{ user['email'] }}</p>
+      <p><strong>Specialization:</strong> {{ user['specialization'] }}</p>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Predictions History -->
+  <h3>Your Previous Predictions</h3>
+  {% if results %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>File</th>
+        <th>Label</th>
+        <th>Confidence</th>
+        <th>Explanation</th>
+        <th>Heatmap</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in results %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ r.filename }}</td>
+        <td>{{ r.label }}</td>
+        <td>{{ r.confidence|round(2) }}%</td>
+        <td>{{ r.explanation }}</td>
+        <td><img src="{{ r.heatmap_path }}"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p class="text-center text-muted mt-4">No predictions yet. Upload a file to begin.</p>
+  {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

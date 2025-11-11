@@ -2,25 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login | Breast Cancer XAI</title>
+  <title>Login | Breast Cancer AI System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-light d-flex justify-content-center align-items-center" style="height:100vh;">
-  <form method="POST" class="p-4 shadow bg-white rounded" style="width:350px;">
-    <h3 class="text-center mb-4 text-danger">Login</h3>
-    {% if error %}
-      <div class="alert alert-danger">{{ error }}</div>
+<body style="background: linear-gradient(135deg, #fce4ec, #fff, #f8bbd0); font-family: 'Poppins', sans-serif;">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(135deg, #e91e63, #f48fb1);">
+  <div class="container">
+    <a class="navbar-brand text-white fw-bold" href="/">🩺 Breast Cancer AI System</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+        <li class="nav-item"><a class="nav-link active text-white" href="/login">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5" style="max-width:400px; background:#fff0f5; padding:30px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+  <h3 class="text-center text-pink mb-3" style="color:#e91e63;">Radiologist Login</h3>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
     {% endif %}
-    <div class="mb-3">
-      <label class="form-label">Username</label>
-      <input type="text" class="form-control" name="username" required>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" required>
-    </div>
-    <button type="submit" class="btn btn-danger w-100">Login</button>
-    <p class="text-center mt-3"><a href="/">← Back Home</a></p>
+  {% endwith %}
+
+  <form action="/login" method="POST">
+    <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+    <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+    <button type="submit" class="btn btn-gradient w-100" style="background: linear-gradient(135deg, #e91e63, #f06292); color:white;">Login</button>
   </form>
+  <p class="text-center mt-2">Don't have an account? <a href="/register" style="color:#e91e63;">Register here</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

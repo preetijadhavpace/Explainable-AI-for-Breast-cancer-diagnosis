@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register | Breast Cancer AI System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body style="background: linear-gradient(135deg, #fce4ec, #fff, #f8bbd0); font-family: 'Poppins', sans-serif;">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(135deg, #e91e63, #f48fb1);">
+  <div class="container">
+    <a class="navbar-brand text-white fw-bold" href="/">🩺 Breast Cancer AI System</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active text-white" href="/register">Register</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/login">Login</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5" style="max-width:400px; background:#fff0f5; padding:30px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+  <h3 class="text-center mb-3" style="color:#e91e63;">Register as Radiologist</h3>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form action="/register" method="POST" onsubmit="return validatePasswords()">
+    <input type="text" name="name" class="form-control mb-2" placeholder="Full Name" required>
+    <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+    <input type="password" id="password" name="password" class="form-control mb-2" placeholder="Create Password" required>
+    <input type="password" id="confirm_password" class="form-control mb-2" placeholder="Confirm Password" required>
+    <input type="text" name="specialization" class="form-control mb-2" placeholder="Specialization" required>
+
+    <button type="submit" class="btn btn-gradient w-100" style="background: linear-gradient(135deg, #e91e63, #f06292); color:white;">Register</button>
+  </form>
+
+  <p class="text-center mt-2">Already have an account? 
+    <a href="/login" style="color:#e91e63;">Login here</a>
+  </p>
+</div>
+
+<script>
+function validatePasswords() {
+  const password = document.getElementById('password').value;
+  const confirm = document.getElementById('confirm_password').value;
+
+  if (password !== confirm) {
+    alert("❌ Passwords do not match. Please re-enter.");
+    return false;
+  }
+  return true;
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
